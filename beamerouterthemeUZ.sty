@@ -37,8 +37,8 @@
 
   \defbeamertemplate*{frametitle}{UZ theme}
   {%
-  \setbeamercolor*{frametitle}{bg=white, fg=author in head/foot.bg}
-  \setbeamercolor*{framesubtitle}{bg=white, fg=black}
+  \setbeamercolor*{frametitle}{bg=palette quaternary.bg, fg=palette quaternary.fg}
+  %\setbeamercolor*{framesubtitle}{bg=palette secondary.bg, fg=palette tertiary.fg}
     \nointerlineskip%
     \vskip-\beamer@headheight%
     \vbox to \beamer@headheight{%
@@ -50,7 +50,7 @@
       {\usebeamercolor[fg]{frametitle}
       \usebeamerfont{frametitle}\strut\insertframetitle}%
       \ifx\insertframesubtitle\@empty{\par} \else%
-        {\usebeamercolor[fg]{framesubtitle}\usebeamerfont{frametitle}\strut\insertframesubtitle}%
+        {\usebeamercolor[fg]{palette secondary}\usebeamerfont{frametitle}\strut\insertframesubtitle}%
       
       \fi%
       \vbox{}%
@@ -66,12 +66,12 @@
   {%
   \leavevmode%
   \hbox{%
-  	\colorbox{white}{ \ifx\beamer@sidebarside\beamer@lefttext%
+  	\begin{beamercolorbox}[wd=\paperwidth, ht=\beamer@headheight,dp=1ex]{palette quaternary} \ifx\beamer@sidebarside\beamer@lefttext%
      \else%
        \hfill%
      \fi%
-       \vrule width0pt height \beamer@headheight }
-
+       \vrule width0pt height \beamer@headheight 
+	\end{beamercolorbox}
     }
   }
 

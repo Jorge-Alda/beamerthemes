@@ -42,9 +42,9 @@
       \advance\leftskip by1.8cm%
       \rightskip=-\beamer@rightmargin%
       \advance\rightskip by1.8cm plus1fil%
-      {\usebeamercolor[fg]{frametitle}\usebeamerfont{frametitle}\strut\insertframetitle\par}%
-      \ifx\insertframesubtitle\@empty\else%
-        {\usebeamercolor[fg]{framesubtitle}\usebeamerfont{framesubtitle}\strut\insertframesubtitle\par}%
+      {\usebeamercolor[fg]{frametitle}\usebeamerfont{frametitle}\strut\insertframetitle}%
+      \ifx\insertframesubtitle\@empty{\par}\else%
+        {\usebeamercolor[fg]{palette tertiary}\usebeamerfont{framesubtitle}\strut\insertframesubtitle\par}%
       \fi%
       %\vbox{}%
      % \vskip-1em%
