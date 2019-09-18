@@ -1,0 +1,106 @@
+% Copyright 2007 by Till Tantau
+% Copyright 2015 by Vedran Mileti\'c, Joseph Wright
+% Copyright 2017,2018 by Louis Stuart, Joseph Wright
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% See the file doc/licenses/LICENSE for more details.
+
+
+\newdimen\beamer@headheight
+\usebeamerfont{frametitle}
+\beamer@headheight=1.0\baselineskip
+\reset@font
+
+\def\beamer@lefttext{left}
+
+\DeclareOptionBeamer{hideothersubsections}[]{\beamer@nav@subsectionstyle{show/show/hide}}
+\DeclareOptionBeamer{hideallsubsections}[]{\beamer@nav@subsectionstyle{hide}}
+
+
+
+\DeclareOptionBeamer{left}{\def\beamer@sidebarside{left}}
+\DeclareOptionBeamer{right}{\def\beamer@sidebarside{right}}
+\ExecuteOptionsBeamer{left}
+\ProcessOptionsBeamer
+
+\newcommand{\UZ@footerlogo}{}
+\newcommand{\footerlogo}[1]{\renewcommand{\UZ@footerlogo}{#1}}
+
+\mode<presentation>
+
+
+  %
+
+  \defbeamertemplate*{frametitle}{UZ theme}
+  {%
+  \setbeamercolor*{frametitle}{bg=white, fg=author in head/foot.bg}
+  \setbeamercolor*{framesubtitle}{bg=white, fg=black}
+    \nointerlineskip%
+    \vskip-\beamer@headheight%
+    \vbox to \beamer@headheight{%
+      \vfil
+      \leftskip=-\beamer@leftmargin%
+      \advance\leftskip by1.0cm%
+      \rightskip=-\beamer@rightmargin%
+      \advance\rightskip by1.0cm plus1fil%
+      {\usebeamercolor[fg]{frametitle}
+      \usebeamerfont{frametitle}\strut\insertframetitle}%
+      \ifx\insertframesubtitle\@empty{\par} \else%
+        {\usebeamercolor[fg]{framesubtitle}\usebeamerfont{frametitle}\strut\insertframesubtitle}%
+      
+      \fi%
+      \vbox{}%
+      \vskip-1em%
+     \vskip0pt
+      \vfil
+    }%
+  }
+%  
+%  
+
+  \defbeamertemplate*{headline}{UZ theme}
+  {%
+  \leavevmode%
+  \hbox{%
+  	\colorbox{white}{ \ifx\beamer@sidebarside\beamer@lefttext%
+     \else%
+       \hfill%
+     \fi%
+       \vrule width0pt height \beamer@headheight }
+
+    }
+  }
+
+
+\defbeamertemplate*{footline}{UZ theme}
+{%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=10ex,dp=1ex,left]{author in head/foot}%
+      \begin{tikzpicture}
+  \useasboundingbox(0,0) rectangle(\the\paperwidth,1.2);
+  \node[left, anchor = south west] (foota) at (0,0) {
+  \hspace*{1em}\usebeamerfont{title in head/foot}\insertshorttitle}; 
+    \node[left, anchor= south west] (footb) at (foota.north west) {\usebeamerfont{author in head/foot}\hspace*{1em}\insertshortauthor\expandafter\ifblank\expandafter{\beamer@shortinstitute}{}{~~(\insertshortinstitute)}};
+    \node[left, anchor = south west] at (footb.north west)  { \hspace*{1em}\usebeamerfont{date in head/foot}\insertshortdate{} };
+    
+
+
+\node[right, anchor=south east] at (\the\paperwidth, 0){\UZ@footerlogo}; 
+
+\end{tikzpicture}
+  \end{beamercolorbox}%
+  }
+  %\vskip0pt%
+  
+}
+
+
+
+
+\mode
+<all>

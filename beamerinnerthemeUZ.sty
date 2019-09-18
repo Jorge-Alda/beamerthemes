@@ -1,0 +1,54 @@
+\newcommand{\Zaragoza@titlepagelogo}{}
+\newcommand{\titlepagelogo}[1]{\renewcommand{\Zaragoza@titlepagelogo}{#1}}
+\usetikzlibrary{positioning}
+\mode<presentation>
+
+
+\setbeamertemplate{background}{
+  \begin{tikzpicture}
+  \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+  \usebeamercolor{palette primary}
+  \fill[color=bg] (0,2) rectangle (\the\paperwidth,\the\paperheight);
+  \usebeamercolor{palette quaternary}
+  \fill[color=bg] (0,0) rectangle (\the\paperwidth, 2);
+  \ifnum\thepage>1\relax%
+   \fill[white,opacity=1] (0,0) rectangle(\the\paperwidth,\the\paperheight);
+   \fi
+  \end{tikzpicture}
+}
+
+% Title page
+\defbeamertemplate*{title page}{Zaragoza}[1][]
+{ 
+%   \begin{textblock*}{12cm}(0cm, 3cm)
+%    \begin{beamercolorbox}[wd=12cm,leftskip=-0.8cm,sep=8pt,#1]{title page header}
+%      \usebeamerfont{title}\inserttitle\par%
+%      \usebeamerfont{subtitle}\insertsubtitle\par%
+%    \end{beamercolorbox}%
+%    \end{textblock*}
+%    \begin{textblock*}{12cm}(0cm, 5.2cm)
+%    \begin{beamercolorbox}[wd=12cm,leftskip=2.2cm,#1]{author}
+%      \usebeamerfont{author}\insertauthor%
+%    \end{beamercolorbox}
+%     \vskip0.2cm%
+%    \begin{beamercolorbox}[wd=12cm,leftskip=2.2cm,#1]{date}
+%      \usebeamerfont{author}\insertdate%
+%    \end{beamercolorbox}
+%    \end{textblock*}
+%  \vfill
+\begin{tikzpicture}
+\useasboundingbox (1,0) rectangle(\the\paperwidth,\the\paperheight);
+\usebeamercolor{palette primary}
+\node[align=left, font=\usebeamerfont{subtitle}, anchor= south west, color=fg] (sub) at (0.2, 2.1)  {\insertsubtitle};
+\usebeamercolor{palette primary}
+\node[align=left, font=\usebeamerfont{title}, anchor= south west, color=fg] at ([shift={(0, 0.2)}]sub.north west) {\inserttitle};
+\usebeamercolor{palette quaternary}
+\node[align=left, font=\usebeamerfont{author}, anchor= north west, color=fg] at (0.2, 1.9) {\insertauthor\\ \insertdate};
+
+\node[left, anchor=north] at (6.0, 8.0){\Zaragoza@titlepagelogo}; 
+
+\end{tikzpicture}
+}
+
+\mode
+<all>
