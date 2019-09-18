@@ -24,9 +24,12 @@ A color theme based on the institutional blue from [University of Zaragoza](http
 
 `palette primary` White text on medium blue background
 
-`palette secondary` Medium blue text on light blue background
+`palette secondary` Black text on light blue background
 
 `palette tertiary` White text on dark blue background
 
 `palette quaternary` Medium blue text on white background
 
+## BW color theme
+
+It may be dull, but this Black and White theme is great for printed slides. Everything is black text on white background. Alerted text and captions are bolded (sadly doesn't work with math).
